@@ -1,0 +1,41 @@
+
+body {
+    background-image: url("images/background.jpeg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.login-page{
+    width: 360px;
+    padding: 10% 0 0;
+    margin: auto;
+}
+.form{
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    max-width: 360;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+}
+
+.display-none {
+    display: none;
+}
+
+nav {
+    position: sticky;
+}
+
+.card{    
+    margin: 45px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container{
+    padding: 19;
+}
+
+
+ 
+ 

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>RecipeApp</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Load CSS -->
+  <link rel="stylesheet" href="./style.css">
+  <!-- Shortcut icon -->
+  <link rel="shortcut icon" href="images/12.png" type="image/x-icon" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="images/12.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      RecipeApp
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">BROWSE</a>
+          <div id="dropdownMenu" class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <a class="dropdown-item">Meal type</a>
+            <div class="dropdown-divider"></div>
+            <a value="appetizers-snacks" class="dropdown-item" href="#">Appetizers&Snacks</a>
+            <a class="dropdown-item" href="#">Breakfast&Brunch</a>
+            <a class="dropdown-item" href="#">Desserts</a>
+            <a class="dropdown-item" href="#">Dinner</a>
+            <a class="dropdown-item" href="#">Drinks</a>
+
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item">World cuisine</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Asian</a>
+            <a class="dropdown-item" href="#">Indian</a>
+            <a class="dropdown-item" href="#">Italian</a>
+            <a class="dropdown-item" href="#">Mexican</a>
+            <a class="dropdown-item" href="#">Southern</a>
+
+          </div>
+        </li>
+        <!-- Button trigger modal-->
+        <button type="button" class="btn btn-outline-success my-2 my-sm-0" data-toggle="modal"
+          data-target=".bd-example-modal-lg">Add Recipe</button>
+      </ul>
+      <div class="form-inline my-2 my-lg-0">
+        <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Find a recipe"
+          aria-label="Search" size="50">
+        <button id="btnSearch" class="btn btn-outline-success my-2 my-sm-0" type="submit"
+          style="margin:5px;">Search</button>
+      </div>
+      <div id="createprofile">
+        <button id="btnSubmit" type="button" class="btn btn-outline-success" style="margin:5px;">Create profile</button>
+      </div>
+      <div id="logout">
+      </div>
+    </div>
+  </nav>
+
+  <!--Search results in Cards-->
+  <div class="container">
+    <div class="row" id="result">
+    </div>
+  </div>
+
+  <!--Register form-->
+  <div  id="loginpage" class="login-page display-none">
+    <div class="form">
+      <form id="regForm" class="form-group-register">
+        <div>
+          <!--<label for="exampleInputuser1-reg">User name</label>
+          <input type="text" class="form-control" id="exampleInputuser1-reg" placeholder="User name">-->
+          <label for="exampleInputEmail1-reg">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1-reg" aria-describedby="emailHelp"
+            placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+            else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1-reg">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1-reg" placeholder="Password">
+        </div>
+        <button id="createBtn" type="button" class="btn btn-success btn-lg btn-block">CREATE</button>
+        <p class="message">Alredy Registered?<a href="#">Log in</a></p>
+      </form>
+      <form class="form-group-login display-none">
+        <div>
+          <!-- <label for="exampleInputuser1-log">User name</label>
+          <input type="text" class="form-control" id="exampleInputuser1-log" placeholder="User name">-->
+
+          <label for="exampleInputEmail1-log">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1-log" aria-describedby="emailHelp"
+            placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1-log">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1-log" placeholder="Password">
+        </div>
+        <button id="loginBtn" type="button" class="btn btn-success btn-lg btn-block">LOG IN</button>
+        <p class="message" id="createBtn">Not Registered?<a href="#">Register</a></p>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+</body>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC1JAQ261ddeZbPXdQrNRETKQUi8erdEFg",
+    authDomain: "recipe-app1.firebaseapp.com",
+    databaseURL: "https://recipe-app1.firebaseio.com",
+    projectId: "recipe-app1",
+    storageBucket: "recipe-app1.appspot.com",
+    messagingSenderId: "161754629273"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script src="script.js"></script>
+</body>
+
+</html>
+
+<!--Modal addrecipe-->
+<div class="modal fade  bd-example-modal-lg" id="addRecipes" tabindex="-1" role="dialog"
+  aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a>Add Recipe</a>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputTitleRecipe">Recipe title</label>
+            <input class="form-control" id="exampleInputTitleRecipe" placeholder="Recipe title">
+          </div>
+          <div class="form-group">
+            <label for="IngredientsInput" class="col-form-label">Ingredients:</label>
+            <textarea class="form-control" id="IngredientsInput"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="howTo" class="col-form-label">How to:</label>
+            <textarea class="form-control" id="howTo"></textarea>
+          </div>
+          <div class="form-group-mealtype">
+            <label for="mealtype" class="col-form-label">Meal type:</label></br>
+            <input id="mealtype" type="radio" name="meal-type" value="Appetizers&Snacks"> Appetizers&Snacks<br>
+            <input id="mealtype" type="radio" name="meal-type" value="Breakfast&Brunch"> Breakfast&Brunch<br>
+            <input id="mealtype" type="radio" name="meal-type" value="Desserts"> Desserts<br>
+            <input id="mealtype" type="radio" name="meal-type" value="Dinner"> Dinner<br>
+            <input id="mealtype" type="radio" name="meal-type" value="Drinks"> Drinks<br>
+          </div>
+          <div class="form-group-worldcuisine">
+            <label for="worldcuisine" class="col-form-label">World cuisine:</label></br>
+            <input id="worldcuisine" type="radio" name="cuisine" value="Asian"> Asian<br>
+            <input id="worldcuisine" type="radio" name="cuisine" value="Indian"> Indian<br>
+            <input id="worldcuisine" type="radio" name="cuisine" value="Italian"> Italian<br>
+            <input id="worldcuisine" type="radio" name="cuisine" value="Mexican"> Mexican<br>
+            <input id="worldcuisine" type="radio" name="cuisine" value="Southern"> Southern <br>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input id="uploadPhoto" type="file" class="custom-file-input" id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose photo</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button id="buttonSaveChanges" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
